@@ -10,7 +10,12 @@ componentDidMount() {
 test = () => {
     console.log('in test', this.props.item);
 }
-    
+
+deleteClicked = () => {
+    this.props.dispatch({
+        type: 'DELETE_ITEM',
+        action: action.payload})
+}
 
   render() {
     return (
@@ -20,7 +25,9 @@ test = () => {
        <ul>
            {this.props.item.map(item => (
                <li>
-                   {item.description} | {item.image_url}
+                   {item.description} |
+                   {item.image_url} |
+                    <button onClick={this.deleteClicked}>DELETE</button>
                </li>
            ))}
        </ul>
