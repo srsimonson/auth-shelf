@@ -18,7 +18,7 @@ class ItemInput extends Component {
   handleItemButton = (item) => {
     console.log("itemClick");
     console.log(item);
-      this.props.dispatch({ type: "SET_ITEMS", payload: this.state});
+      this.props.dispatch({ type: "ADD_ITEMS", payload: this.state});
   };
 
   render() {
