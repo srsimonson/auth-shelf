@@ -13,4 +13,19 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req,res) => {
+    console.log('In the POST route');
+    console.log(req.body);
+    console.log('is authenticated?', req.isAuthenticated);
+    const queryText = `INSERT INTO "item" (description, image_url)
+                        VALUES ($1, $2)`;
+    pool.query(queryText, [description, image_url])
+        .then((result) => {
+            console.log('In POST', result);
+            res.sendStatus(201)
+        }).catch((error) => {
+            console.log('Error in POST', error);
+            res.sendStatus(500);
+        })
+})
 module.exports = router;
