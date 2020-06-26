@@ -5,20 +5,25 @@ class ItemInput extends Component {
   state = {
     description: " ",
     image_url: " ",
+    user_id: " ",
   };
 
+  componentDidMount() {
+    this.setState({
+      user_id: this.props.user.id,
+    });
+  }
   handleInputChangeFor = (description) => (event) => {
     this.setState({
       [description]: event.target.value,
     });
-    console.log(this.state);
-    console.log(this.props);
+    // console.log(this.props.user.id);
+    // console.log(this.state);
+    // console.log(this.props);
   };
 
   handleItemButton = (item) => {
-    console.log("itemClick");
-    console.log(item);
-      this.props.dispatch({ type: "ADD_ITEMS", payload: this.state});
+    this.props.dispatch({ type: "ADD_ITEMS", payload: this.state });
   };
 
   render() {
@@ -41,6 +46,7 @@ class ItemInput extends Component {
 const mapStateToProps = (state) => ({
   description: state.description,
   image_url: state.image_url,
+  user: state.user,
 });
 
 export default connect(mapStateToProps)(ItemInput);
