@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
     .query(queryText, [
       req.body.description,
       req.body.image_url,
-      req.body.user_id
+      req.body.user_id,
       //   req.body.user_id,
     ])
     .then((result) => {
@@ -46,6 +46,8 @@ router.post("/", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   queryText = `DELETE FROM "item" WHERE id=$1;`;
+  console.log(req.params.id);
+  id = req.params.id;
 
   pool
     .query(queryText, [id])

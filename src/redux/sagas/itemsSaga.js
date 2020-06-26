@@ -18,6 +18,21 @@ function* getItem() {
 function* itemsSaga() {
   yield takeLatest("GET_ITEMS_LIST", getItem);
   yield takeLatest("ADD_ITEMS", addItems);
+  yield takeLatest("DELETE_ITEM", deleteItem);
+}
+
+function* deleteItem(action){
+  console.log('DELETE REQ')
+  console.log(action.payload);
+  try{
+  yield axios.delete(`api/item/${action.payload}`)
+  // put({type: "SET_ITEMS_LIST"});
+  yield put({type: "GET_ITEMS_LIST"});
+  }
+  catch(error){
+    console.log('Axios DEL err', error);
+  }
+
 }
 
 function* addItems(action) {
