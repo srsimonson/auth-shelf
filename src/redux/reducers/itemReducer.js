@@ -1,6 +1,6 @@
 const itemReducer = (state = [], action) => {
   switch (action.type) {
-    case "SET_ITEMS":
+    case "SET_ITEMS_LIST":
       return action.payload;
     case "UNSET_ITEMS":
       return [];
