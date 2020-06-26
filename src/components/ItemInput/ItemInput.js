@@ -12,14 +12,14 @@ class ItemInput extends Component {
       [description]: event.target.value,
     });
     console.log(this.state);
+    console.log(this.props);
   };
 
   handleItemButton = (item) => {
-      console.log('itemClick');
-      console.log(item);
+    console.log("itemClick");
+    console.log(item);
       this.props.dispatch({ type: "SET_ITEMS", payload: this.state});
-
-  }
+  };
 
   render() {
     return (
