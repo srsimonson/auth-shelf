@@ -14,6 +14,13 @@ class ItemInput extends Component {
     console.log(this.state);
   };
 
+  handleItemButton = (item) => {
+      console.log('itemClick');
+      console.log(item);
+      this.props.dispatch({ type: "SET_ITEMS", payload: this.state});
+
+  }
+
   render() {
     return (
       <div>
@@ -25,6 +32,7 @@ class ItemInput extends Component {
           placeholder="Image Url"
           onChange={this.handleInputChangeFor("image_url")}
         ></input>
+        <button onClick={this.handleItemButton}>Add Item</button>
       </div>
     );
   }
